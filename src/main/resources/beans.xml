@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+    <bean id="petrolEngine" name="petrolEngine" class="io.pragra.learning.springfirst.PetrolEngine">
+        <constructor-arg name="engineType" value="VT9"> </constructor-arg>
+
+    </bean>
+    <bean id="dieselEngine" name="dieselEngine" class="io.pragra.learning.springfirst.DieselEngine">
+        <constructor-arg name="engineType" value="VT0"> </constructor-arg>
+    </bean>
+
+    <bean name="car" class="io.pragra.learning.springfirst.Car">
+        <constructor-arg name="make" value="Honda"> </constructor-arg>
+        <constructor-arg name="engine" ref="petrolEngine"></constructor-arg>
+    </bean>
+
+
+    <bean name="address" class="io.pragra.learning.springfirst.Address">
+        <constructor-arg name="type" value="house"></constructor-arg>
+        <constructor-arg name="location" value="Sandyshores Drive"></constructor-arg>
+    </bean>
+
+
+    <bean name="person" class="io.pragra.learning.springfirst.Person">
+        <property name="name" value="Navleen"></property>
+        <property name="age"  value="25"></property>
+        <property name="hobbies" >
+            <list>
+                <value>I am fond of travelling</value>
+                <value>I love to listen to music</value>
+                <value>I like to read books</value>
+            </list>
+        </property>
+        <property name="addressMap" >
+            <map>
+                <entry key ="home address" value-ref= "address" />
+                <entry key ="office address" value-ref ="address"/>
+            </map>
+        </property>
+     </bean>
+
+
+
+</beans>
